@@ -12,7 +12,21 @@ from langchain.schema import SystemMessage, HumanMessage
 # Configure OpenAI API key
 # openai.api_key = os.getenv("OPENAI_API_KEY")
 
-llm_gpt = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+# llm_gpt = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+
+import streamlit as st
+from langchain_openai import ChatOpenAI
+
+# Load API key from secrets
+try:
+    llm_gpt = ChatOpenAI(
+        api_key=st.secrets["OPENAI_API_KEY"],
+        model="gpt-4o-mini",
+        temperature=0
+    )
+    st.success("API key loaded successfully!")
+except KeyError:
+    st.error("API key missing! Add to Streamlit Secrets.")
 
 def extract_code(llm_response: str) -> str:
     """
