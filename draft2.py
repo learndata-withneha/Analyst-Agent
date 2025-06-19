@@ -65,7 +65,8 @@ Ensure the code:
 - Does NOT include any additional explanation—only output the complete Python code.
 """
     try:
-        response = llm_gpt(custom_prompt).content
+        response = llm_gpt.invoke(custom_prompt).content
+
         if isinstance(response, str):
             code_text = response
         elif hasattr(response, "content"):
