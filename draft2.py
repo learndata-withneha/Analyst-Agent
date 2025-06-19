@@ -3,8 +3,8 @@ import pandas as pd
 # import openai
 import os
 import re
-from dotenv import load_dotenv
-load_dotenv()
+# from dotenv import load_dotenv
+# load_dotenv()
 import pandas as pd
 from langchain_openai import ChatOpenAI
 from langchain.schema import SystemMessage, HumanMessage
